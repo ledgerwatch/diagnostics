@@ -61,6 +61,11 @@ func (ra *mockNodeClientReader) FindReorgs(ctx context.Context, w http.ResponseW
 	panic("implement me")
 }
 
+func (ra *mockNodeClientReader) FindDeepReorgs(ctx context.Context, w http.ResponseWriter, template *template.Template, requestChannel chan *internal.NodeRequest) {
+	//TODO implement me
+	panic("implement me")
+}
+
 func (ra *mockNodeClientReader) ProcessLogList(w http.ResponseWriter, template *template.Template, sessionName string, requestChannel chan *internal.NodeRequest) {
 	//TODO implement me
 	panic("implement me")
