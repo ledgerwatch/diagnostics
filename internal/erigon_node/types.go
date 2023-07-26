@@ -9,6 +9,15 @@ type Versions struct {
 	GitCommit      string
 }
 
+type ReorgInDetail struct {
+	ParentHash  string
+	BlockNum    uint64
+	Coinbase    string
+	Root        string
+	GasLimit    uint64
+    GasUsed     uint64
+}
+
 type Flags struct {
 	Success     bool
 	Error       string

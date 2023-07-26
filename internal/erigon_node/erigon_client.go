@@ -189,6 +189,7 @@ type Client interface {
 	BodiesDownload(ctx context.Context, w http.ResponseWriter, template *template.Template, requestChannel chan *internal.NodeRequest)
 	HeadersDownload(ctx context.Context, w http.ResponseWriter, template *template.Template, requestChannel chan *internal.NodeRequest)
 	FindReorgs(ctx context.Context, w http.ResponseWriter, template *template.Template, requestChannel chan *internal.NodeRequest)
+	FindReorgsInDetail(ctx context.Context, w http.ResponseWriter, template *template.Template, requestChannel chan *internal.NodeRequest)
 	ProcessLogList(w http.ResponseWriter, template *template.Template, sessionName string, requestChannel chan *internal.NodeRequest)
 	LogHead(filename string, requestChannel chan *internal.NodeRequest) LogPart
 	LogTail(filename string, offset uint64, requestChannel chan *internal.NodeRequest) LogPart

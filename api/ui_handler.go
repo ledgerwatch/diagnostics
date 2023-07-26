@@ -165,6 +165,11 @@ func (h *UIHandler) ReOrg(w http.ResponseWriter, r *http.Request) {
 	h.erigonNode.FindReorgs(r.Context(), w, h.uiTemplate, requestChannel)
 }
 
+func (h *UIHandler) ReOrgInDetail(w http.ResponseWriter, r *http.Request) {
+	requestChannel := h.uiSessions.LookUpSession(r.FormValue(currentSessionName))
+	h.erigonNode.FindReorgsInDetail(r.Context(), w, h.uiTemplate, requestChannel)
+}
+
 func (h *UIHandler) BodiesDownload(w http.ResponseWriter, r *http.Request) {
 	requestChannel := h.uiSessions.LookUpSession(r.FormValue(currentSessionName))
 	h.erigonNode.BodiesDownload(r.Context(), w, h.uiTemplate, requestChannel)
@@ -210,6 +215,8 @@ func NewUIHandler(
 	r.Post("/log_download", r.LogDownload)
 
 	r.Post("/reorgs", r.ReOrg)
+	r.Post("/reorgs_in_detail", r.ReOrgInDetail)
+	
 	r.Post("/bodies_download", r.BodiesDownload)
 	r.Post("/headers_download", r.HeadersDownload)
 	r.Post("/sync_stages", r.SyncStages)

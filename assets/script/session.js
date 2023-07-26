@@ -93,6 +93,21 @@ async function findReorgs(sessionName) {
         .catch((err) => d.innerHTML = "ERROR: " + err.message);
 }
 
+async function findReorgsInDetail(sessionName) {
+    const d = document.getElementById('reorgs_in_detail');
+    d.innerHTML = "Looking for reorgs...";
+    let formData = new FormData();
+    formData.append('current_session_name', sessionName);
+    const request =  createRequest("/ui/reorgs_in_detail", "POST", formData)
+    fetch(request)
+        .then((response) => response.body)
+        .then((body) => body.getReader())
+        .then((reader) => processReader(d, reader))
+        .then(() => console.log('completed'))
+        .catch((err) => d.innerHTML = "ERROR: " + err.message);
+}
+
+
 async function processReaderReplace(d, reader) {
     const utf8Decoder = new TextDecoder("utf-8");
     let buffer = ''
